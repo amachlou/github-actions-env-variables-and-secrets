@@ -3,8 +3,9 @@ on:
   workflow_dispatch:
   push:
     branches:
-      # - master
+      - master
       - develop
+      - test-branch
 jobs:
   test:
     env:
