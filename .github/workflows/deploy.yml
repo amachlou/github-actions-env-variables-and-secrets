@@ -3,15 +3,15 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
-      - dev
+      # - master
+      - develop
 jobs:
   test:
     env:
-      MONGODB_CLUSTER_ADDRESS : cluster0.yyuu42e.mongodb.net
-      MONGODB_USERNAME : ${{ secrets.MONGODB_USERNAME }}
-      MONGODB_PASSWORD : ${{ secrets.MONGODB_PASSWORD }}
-      PORT : 3000 
+      MONGODB_CLUSTER_ADDRESS: cluster0.yyuu42e.mongodb.net
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      PORT: 3000
     environment: dev
     runs-on: ubuntu-latest
     steps:
@@ -34,11 +34,11 @@ jobs:
           echo "User: $MONGODB_USERNAME"
           echo Pass .. $MONGODB_PASSWORD
           echo "USER sec: ${{ secrets.MONGODB_USERNAME}}"
-      
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |        
+        run: |
           echo "..."
